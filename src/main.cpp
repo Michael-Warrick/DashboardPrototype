@@ -3,8 +3,9 @@
 
 #include <iostream>
 
-// Window dimensions
-const GLuint WIDTH = 800, HEIGHT = 600;
+void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+
+const unsigned int WIDTH = 800, HEIGHT = 600;
 
 int main()
 {
@@ -13,16 +14,18 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Simple OpenGL App", NULL, NULL);
-    glfwMakeContextCurrent(window);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
+
+    glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
     // Load OpenGL functions, gladLoadGL returns the loaded version, 0 on error.
     int version = gladLoadGL(glfwGetProcAddress);
@@ -34,7 +37,7 @@ int main()
 
     glViewport(0, 0, WIDTH, HEIGHT);
 
-    // Game loop
+    // Render loop
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
@@ -48,4 +51,9 @@ int main()
 
     glfwTerminate();
     return 0;
+}
+
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
 }
