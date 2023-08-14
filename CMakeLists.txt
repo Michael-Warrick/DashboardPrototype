@@ -4,8 +4,6 @@ project(SimpleOpenGLApp VERSION 0.0.1 LANGUAGES CXX)
 # Setting C++ Version to 2020
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(OpenGL REQUIRED)
-
 # Including libraries as subdirectories
 add_subdirectory(vendor/cmake-glad2)
 add_subdirectory(vendor/glfw)
@@ -32,8 +30,6 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-    PRIVATE
     cmake-glad2
     glfw
-    OpenGL::GL
 )

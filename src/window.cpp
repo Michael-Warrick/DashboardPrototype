@@ -6,18 +6,18 @@ Window::Window()
 
     // Using most supported version by default (4.1)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
-    platformWindow = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
-    if (platformWindow == NULL)
+    window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+    if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
     }
 
-    glfwMakeContextCurrent(platformWindow);
+    glfwMakeContextCurrent(window);
 
     int version = gladLoadGL(glfwGetProcAddress);
     if (version == 0)
@@ -31,10 +31,27 @@ Window::Window()
 
 Window::~Window()
 {
+    glfwDestroyWindow(window);
     glfwTerminate();
+}
+
+void Window::Present()
+{
+    glfwSwapBuffers(window);
+
+    // Render
+    glClearColor(0.2f, 0.4f, 0.5f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glfwPollEvents();
 }
 
 GLFWwindow* Window::GetPlatformWindow() 
 {
-    return platformWindow;
+    return window;
+}
+
+bool Window::IsOpen()
+{
+    return !glfwWindowShouldClose(window);
 }

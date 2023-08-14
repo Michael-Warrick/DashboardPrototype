@@ -10,10 +10,13 @@ public:
     Window();
     ~Window();
 
+    void Present();
+
     GLFWwindow* GetPlatformWindow();
+    bool IsOpen();
 
 private:
-    GLFWwindow* platformWindow;
+    GLFWwindow* window = nullptr;
 
     unsigned int width = 800;
     unsigned int height = 600;
