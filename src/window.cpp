@@ -8,6 +8,11 @@ Window::Window()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
     window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -26,27 +31,24 @@ Window::Window()
         glfwTerminate();
     }
 
-    glViewport(0, 0, width, height);
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+
+    renderer.Init();
 }
 
 Window::~Window()
 {
+    renderer.CleanUp();
     glfwDestroyWindow(window);
     glfwTerminate();
 }
 
 void Window::Present()
 {
-    glfwSwapBuffers(window);
-
-    // Render
-    glClearColor(0.2f, 0.4f, 0.5f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glfwPollEvents();
+    renderer.Draw();
 }
 
-GLFWwindow* Window::GetPlatformWindow() 
+GLFWwindow *Window::GetPlatformWindow()
 {
     return window;
 }
@@ -54,4 +56,9 @@ GLFWwindow* Window::GetPlatformWindow()
 bool Window::IsOpen()
 {
     return !glfwWindowShouldClose(window);
+}
+
+void Window::framebufferSizeCallback(GLFWwindow *window, int width, int height)
+{
+    glViewport(0, 0, width, height);
 }

@@ -1,17 +1,12 @@
 #include "application.hpp"
 
-Application::Application()
+void Application::Run()
 {
-}
-
-Application::~Application()
-{
-}
-
-void Application::Run() 
-{
-    while(window.IsOpen())
+    while (window.IsOpen())
     {
         window.Present();
+
+        glfwSwapBuffers(window.GetPlatformWindow());
+        glfwPollEvents();
     }
 }

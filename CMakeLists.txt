@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25.3)
-project(SimpleOpenGLApp VERSION 0.0.1 LANGUAGES CXX)
+project(Xbox-360-Dashboard VERSION 0.0.1 LANGUAGES CXX)
 
 # Setting C++ Version to 2020
 set(CMAKE_CXX_STANDARD 20)
@@ -12,12 +12,16 @@ add_executable(${PROJECT_NAME}
     # Headers
     ${CMAKE_SOURCE_DIR}/include/application.hpp
     ${CMAKE_SOURCE_DIR}/include/window.hpp
+    ${CMAKE_SOURCE_DIR}/include/renderer.hpp
+    ${CMAKE_SOURCE_DIR}/include/shader.hpp
 
     # Sources
     ${CMAKE_SOURCE_DIR}/src/main.cpp
 
     ${CMAKE_SOURCE_DIR}/src/application.cpp
     ${CMAKE_SOURCE_DIR}/src/window.cpp
+    ${CMAKE_SOURCE_DIR}/src/renderer.cpp
+    ${CMAKE_SOURCE_DIR}/src/shader.cpp
 )
 
 # Including added libraries

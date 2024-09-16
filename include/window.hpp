@@ -4,6 +4,8 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
+#include "renderer.hpp"
+
 class Window
 {
 public:
@@ -11,15 +13,18 @@ public:
     ~Window();
 
     void Present();
-
     GLFWwindow* GetPlatformWindow();
     bool IsOpen();
 
 private:
+    static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+    
     GLFWwindow* window = nullptr;
 
-    unsigned int width = 800;
-    unsigned int height = 600;
+    uint16_t width = 1280;
+    uint16_t height = 720;
 
-    std::string title = "Simple OpenGL App";
+    std::string title = "Xbox 360 Dashboard";
+
+    Renderer renderer;
 };
