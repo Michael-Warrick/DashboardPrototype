@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25.3)
+cmake_minimum_required(VERSION 3.29.6)
 project(Xbox-360-Dashboard VERSION 0.0.1 LANGUAGES CXX)
 
 # Setting C++ Version to 2020

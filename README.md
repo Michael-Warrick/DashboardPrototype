@@ -1,29 +1,34 @@
-# SimpleOpenGLApp
-A very simple no-installation or package manager necessary cross-platform OpenGL 4.1 starter project.
+# DashboardPrototype [![Licence](https://img.shields.io/github/license/Michael-Warrick/Vulkan-Compute-with-Graphics?style=flat)](./LICENSE)
+
+![Blue Interface Demo](resources/images/screenshots/blue_interface.png)
+*Prototype Interface*
 
 ## About
-This project is perfect for those wanting to start out learning modern OpenGL while remaining cross-platform. Unfortunately, macOS only supports OpenGL up to version 4.1 so developers miss out on nice-haves such as compute shaders however when just starting out this is more than enough to learn the basics even including geometry shaders and tessalation shaders too. The project is CMake based making use of git submodules and CMake's subdirectory feature to provide a simpler, more compartimentalised project.
+This project aims to provide [Xenia](https://xenia.jp) with a more familiar and user friendly interface. Games, Social needs and Settings will all be available through a modern, customisable and gpu-driven interface instead of using configuration files.
 
 ## Setup
-To get started with this project, all that needs to be done is to clone the repository as shown below and you can move onto the next step.
+To get started clone or download the project.
 ```shell
-$ git clone --recursive https://github.com/Michael-Warrick/SimpleOpenGLApp.git
+$ git clone --recursive https://github.com/Michael-Warrick/DashboardPrototype.git
 ```
 
 ## Building
-In order to build the project, after having cloned it locally, either use an IDE with CMake capabilities, the CMake GUI App or enter these commands into your shell of choice.
+The project uses CMake and is by nature cross-platform, use the steps below to build and run.
 ```shell
-$ cd SimpleOpenGLApp
+$ cd DashboardPrototype
 ```
 ```shell
-$ mkdir build
-```
-```shell
-$ cd build
+$ mkdir build && cd build
 ```
 ```shell
 $ cmake ..
 ```
+```shell
+$ cmake --build .
+```
+
+## Disclaimer
+This project is intended solely for educational and research purposes, and it is made possible through the extensive evaluation of an off-the-shelf Xbox 360 console. The project is not intended to be a commercial product, nor does it seek to replicate or infringe upon Microsoft's proprietary designs, products, or intellectual property. It serves as a technical exploration aimed at advancing understanding of certain concepts and technologies. All Microsoft trademarks and design elements remain the property of Microsoft, and no part of this project should be viewed as an attempt to compete with or replicate their work.
 
 ## Resources
 - CMake Docs: https://cmake.org/documentation/
