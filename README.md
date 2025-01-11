@@ -1,6 +1,7 @@
-# DashboardPrototype [![Licence](https://img.shields.io/github/license/Michael-Warrick/Vulkan-Compute-with-Graphics?style=flat)](./LICENSE)
+# DashboardPrototype
+[![Licence](https://img.shields.io/github/license/Michael-Warrick/DashboardPrototype?style=flat)](./LICENSE)
 
-![Blue Interface Demo](resources/images/screenshots/blue_interface.png)
+![Blue Interface Demo](./Resources/Images/Screenshots/Teal_Interface.png)
 *Prototype Interface*
 
 ## About

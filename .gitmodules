@@ -1,6 +1,9 @@
-[submodule "vendor/cmake-glad2"]
-	path = vendor/cmake-glad2
-	url = https://github.com/Michael-Warrick/cmake-glad2
-[submodule "vendor/glfw"]
-	path = vendor/glfw
-	url = https://github.com/glfw/glfw
+[submodule "Vendor/glad"]
+	path = Vendor/glad
+	url = https://github.com/Dav1dde/glad.git
+[submodule "Vendor/glfw"]
+	path = Vendor/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "Vendor/doxygen-awesome-css"]
+	path = Vendor/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git

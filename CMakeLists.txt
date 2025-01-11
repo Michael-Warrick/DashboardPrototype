@@ -1,39 +1,49 @@
-cmake_minimum_required(VERSION 3.29.6)
-project(Xbox-360-Dashboard VERSION 0.0.1 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
+project(DashboardPrototype VERSION 1.0.0)
 
 # Setting C++ Version to 2020
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Including libraries as subdirectories
-add_subdirectory(vendor/cmake-glad2)
-add_subdirectory(vendor/glfw)
+# Creating glad library for OpenGL 4.1
+add_subdirectory(Vendor/glad/cmake glad_cmake)
+glad_add_library(glad_gl_core_41 REPRODUCIBLE API gl:core=4.1)
 
-add_executable(${PROJECT_NAME} 
-    # Headers
-    ${CMAKE_SOURCE_DIR}/include/application.hpp
-    ${CMAKE_SOURCE_DIR}/include/window.hpp
-    ${CMAKE_SOURCE_DIR}/include/renderer.hpp
-    ${CMAKE_SOURCE_DIR}/include/shader.hpp
+add_subdirectory(Vendor/glfw)
 
-    # Sources
-    ${CMAKE_SOURCE_DIR}/src/main.cpp
+add_executable(${PROJECT_NAME}
+    # Graphics
+    Graphics/Renderer.cpp
+    Graphics/Shader.cpp
 
-    ${CMAKE_SOURCE_DIR}/src/application.cpp
-    ${CMAKE_SOURCE_DIR}/src/window.cpp
-    ${CMAKE_SOURCE_DIR}/src/renderer.cpp
-    ${CMAKE_SOURCE_DIR}/src/shader.cpp
+    # Core
+    Core/Application.cpp
+    Core/Window.cpp
+    Core/main.cpp
 )
 
-# Including added libraries
+# Includes for first-party headers
 target_include_directories(${PROJECT_NAME}
-    PUBLIC
-    $<INSTALL_INTERFACE:include>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    cmake-glad2
+PUBLIC
+    $<INSTALL_INTERFACE:${CMAKE_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
+)
+
+# Includes for third-party headers
+target_include_directories(${PROJECT_NAME}
+PRIVATE
     glfw
 )
 
 target_link_libraries(${PROJECT_NAME}
-    cmake-glad2
+PUBLIC 
+    glad_gl_core_41
     glfw
+)
+
+add_custom_target(copy_resources ALL
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  ${PROJECT_SOURCE_DIR}/Resources
+  ${CMAKE_BINARY_DIR}/Bin/Resources
+  COMMENT "Copying resources into binary directory"
 )
