@@ -1,7 +1,7 @@
 # DashboardPrototype
 [![Licence](https://img.shields.io/github/license/Michael-Warrick/DashboardPrototype?style=flat)](./LICENSE)
 
-![Blue Interface Demo](./Resources/Images/Screenshots/Teal_Interface.png)
+![Blue Interface Demo](./Resources/Images/Screenshots/Teal_Interface.png)\
 *Prototype Interface*
 
 ## About
