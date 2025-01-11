@@ -30,7 +30,7 @@ CTestTestfile.cmake
 _deps
 
 # Project specific stuff
-build/
+_build/
 
 [Bb][Uu][Ii][Ll][Dd]/
 

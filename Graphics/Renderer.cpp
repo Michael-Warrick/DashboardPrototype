@@ -2,7 +2,7 @@
 
 Renderer::Renderer() {
     m_QuadShader =
-        Shader("./Resources/Shaders/vert.glsl", "Resources/Shaders/frag.glsl");
+        Shader("./Resources/Shaders/Quad.vert.glsl", "Resources/Shaders/Quad.frag.glsl");
     createBuffers();
 }
 
