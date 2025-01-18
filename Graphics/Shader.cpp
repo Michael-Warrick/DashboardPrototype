@@ -8,8 +8,6 @@ Shader::Shader(const std::string &vertexShaderPath,
     createShaderProgram(m_VertexShaderPath, m_FragmentShaderPath);
 }
 
-void Shader::Use() { glUseProgram(m_ID); }
-
 Shader::~Shader() {
     if (m_ID != 0) {
         glDeleteProgram(m_ID);
@@ -30,6 +28,16 @@ Shader &Shader::operator=(const Shader &other) {
         }
     }
     return *this;
+}
+
+void Shader::Use() { glUseProgram(m_ID); }
+
+void Shader::SetTextureID(const std::string &name, const GLuint &samplerLocation) const {
+    glUniform1i(glGetUniformLocation(m_ID, name.c_str()), samplerLocation); 
+}
+
+void Shader::SetMat4(const std::string &name, const glm::mat4 &mat) {
+    glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 std::vector<char> Shader::readFile(const std::string &filePath) {

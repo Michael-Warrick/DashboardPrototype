@@ -10,11 +10,16 @@ add_subdirectory(Vendor/glad/cmake glad_cmake)
 glad_add_library(glad_gl_core_41 REPRODUCIBLE API gl:core=4.1)
 
 add_subdirectory(Vendor/glfw)
+add_subdirectory(Vendor/glm)
 
 add_executable(${PROJECT_NAME}
     # Graphics
+    Graphics/stb_image/stb_image.cpp
     Graphics/Renderer.cpp
     Graphics/Shader.cpp
+    Graphics/Texture.cpp
+    Graphics/Primatives.cpp
+    Graphics/Camera.cpp
 
     # Core
     Core/Application.cpp
@@ -33,12 +38,14 @@ PUBLIC
 target_include_directories(${PROJECT_NAME}
 PRIVATE
     glfw
+    glm
 )
 
 target_link_libraries(${PROJECT_NAME}
 PUBLIC 
     glad_gl_core_41
     glfw
+    glm
 )
 
 add_custom_target(copy_resources ALL

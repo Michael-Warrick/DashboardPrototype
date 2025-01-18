@@ -1,5 +1,8 @@
 #include "Application.hpp"
 
+Application::Application() : m_Renderer(m_Window.GetPlatformWindow()) {
+}
+
 void Application::Run() {
     while (m_Window.IsOpen()) {
         // Poll for window events (resize, DPI change...)

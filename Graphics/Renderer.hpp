@@ -3,23 +3,31 @@
 #include <iostream>
 
 #include <glad/gl.h>
+#include <GLFW/glfw3.h>
 
-#include "Shader.hpp"
+#include "Primatives.hpp"
+#include "Camera.hpp"
 
 class Renderer {
 public:
-    Renderer();
+    Renderer() = default;
+    Renderer(GLFWwindow *window);
     ~Renderer();
 
     void Draw();
 
 private:
-    void createBuffers();
+    GLFWwindow *m_Window = nullptr;
     void drawFrame();
 
-    unsigned int m_QuadVBO;
-    unsigned int m_QuadVAO;
-    unsigned int m_QuadEBO;
+    void handleFramebufferResize(int width, int height);
 
-    Shader m_QuadShader;
+    static void framebufferResizeCallback(GLFWwindow *window, int width,
+                                          int height);
+
+    Graphics::Primatives::Quad m_Quad;
+    Graphics::Camera m_Camera;
+
+    uint32_t m_ViewportWidth = 1280;
+    uint32_t m_ViewportHeight = 720;
 };

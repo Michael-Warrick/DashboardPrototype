@@ -1,8 +1,7 @@
 # DashboardPrototype
 [![Licence](https://img.shields.io/github/license/Michael-Warrick/DashboardPrototype?style=flat)](./LICENSE)
 
-![Blue Interface Demo](./Resources/Images/Screenshots/Teal_Interface.png)\
-*Prototype Interface*
+![Teal Interface](./Resources/Images/Screenshots/Teal_Interface.png)
 
 ## About
 This project aims to provide [Xenia](https://xenia.jp) with a more familiar and user friendly interface. Games, Social needs and Settings will all be available through a modern, customisable and gpu-driven interface instead of using configuration files.

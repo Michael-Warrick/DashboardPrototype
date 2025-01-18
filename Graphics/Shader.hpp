@@ -7,6 +7,9 @@
 #include <vector>
 
 #include <glad/gl.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class Shader {
 public:
@@ -15,9 +18,11 @@ public:
            const std::string &fragmentShaderPath);
     ~Shader();
 
-    void Use();
-
     Shader &operator=(const Shader &other);
+
+    void Use();
+    void SetTextureID(const std::string &name, const GLuint &samplerLocation) const;
+    void SetMat4(const std::string &name, const glm::mat4 &mat);
 
 private:
     std::vector<char> readFile(const std::string &filePath);

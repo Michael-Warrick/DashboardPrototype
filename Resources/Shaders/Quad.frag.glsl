@@ -2,6 +2,11 @@
 
 layout (location = 0) out vec4 FragColor;
 
+layout (location = 0) in vec3 fragmentColor;
+layout (location = 1) in vec2 fragmentTextureCoords;
+
+uniform sampler2D imageTexture;
+
 vec3 hexToRGB(int hexValue) 
 {
    vec3 color;
@@ -14,5 +19,5 @@ vec3 hexToRGB(int hexValue)
 
 void main()
 {
-   FragColor = vec4(hexToRGB(0x008B01), 1.0);
+   FragColor = texture(imageTexture, fragmentTextureCoords) * vec4(1.0, 1.0, 1.0, 1.0);
 }
