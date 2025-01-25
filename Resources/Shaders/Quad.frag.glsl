@@ -19,5 +19,6 @@ vec3 hexToRGB(int hexValue)
 
 void main()
 {
-   FragColor = texture(imageTexture, fragmentTextureCoords) * vec4(1.0, 1.0, 1.0, 1.0);
+   // FragColor = texture(imageTexture, fragmentTextureCoords) * vec4(1.0, 1.0, 1.0, 1.0);
+   FragColor = vec4(hexToRGB(0x289728), 1.0);
 }

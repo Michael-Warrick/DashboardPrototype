@@ -15,11 +15,15 @@ Graphics::Primatives::Quad::~Quad() {
     glDeleteBuffers(1, &m_QuadEBO);
 }
 
-void Graphics::Primatives::Quad::Draw(glm::vec3 position, glm::mat4 projectionMatrix, glm::mat4 viewMatrix) {
+void Graphics::Primatives::Quad::Draw(glm::vec3 position, glm::vec3 scale,
+                                      glm::mat4 projectionMatrix,
+                                      glm::mat4 viewMatrix) {
     m_QuadTexture.Bind(GL_TEXTURE0);
     m_QuadShader.Use();
 
     glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
+    model = glm::scale(model, scale);
+
     m_MVP = projectionMatrix * viewMatrix * model;
     // Set MVP
     m_QuadShader.SetMat4("mvp", m_MVP);

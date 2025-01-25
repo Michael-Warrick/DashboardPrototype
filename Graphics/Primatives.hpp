@@ -36,7 +36,8 @@ namespace Graphics {
              * @details #Draw is used to draw a single Quad, used when
              * uniqueness and flexibility are requirements.
              */
-            void Draw(glm::vec3 position, glm::mat4 projectionMatrix, glm::mat4 viewMatrix);
+            void Draw(glm::vec3 position, glm::vec3 scale,
+                      glm::mat4 projectionMatrix, glm::mat4 viewMatrix);
 
             /**
              * @brief Issues an instanced draw call to render an array of Quads.
@@ -56,7 +57,7 @@ namespace Graphics {
             GLuint m_QuadEBO; /**< ID pointing to Quad's OpenGL Element Buffer
                                  Object. */
 
-            Shader m_QuadShader; /**< Quad's Shader object. */
+            Shader m_QuadShader;   /**< Quad's Shader object. */
             Texture m_QuadTexture; /**< Quad's Texture object. */
 
             glm::mat4 m_MVP;
