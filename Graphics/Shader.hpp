@@ -22,7 +22,9 @@ public:
 
     void Use();
     void SetTextureID(const std::string &name, const GLuint &samplerLocation) const;
-    void SetMat4(const std::string &name, const glm::mat4 &mat);
+    void SetHexColor(const std::string &name, uint32_t hexColor) const;
+    void SetVec4(const std::string &name, const glm::vec4 &value) const;
+    void SetMat4(const std::string &name, const glm::mat4 &mat) const;
 
 private:
     std::vector<char> readFile(const std::string &filePath);

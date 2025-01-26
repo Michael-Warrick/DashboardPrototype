@@ -30,6 +30,7 @@ private:
     Graphics::Camera m_Camera;
 
     const float m_TileOffset = 0.025f;
+
     const float m_TileWidth = 1.33f;
     const float m_TileHeight = 1.0f;
 

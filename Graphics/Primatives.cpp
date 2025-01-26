@@ -16,6 +16,7 @@ Graphics::Primatives::Quad::~Quad() {
 }
 
 void Graphics::Primatives::Quad::Draw(glm::vec3 position, glm::vec3 scale,
+                                      uint32_t hexColor,
                                       glm::mat4 projectionMatrix,
                                       glm::mat4 viewMatrix) {
     m_QuadTexture.Bind(GL_TEXTURE0);
@@ -27,6 +28,7 @@ void Graphics::Primatives::Quad::Draw(glm::vec3 position, glm::vec3 scale,
     m_MVP = projectionMatrix * viewMatrix * model;
     // Set MVP
     m_QuadShader.SetMat4("mvp", m_MVP);
+    m_QuadShader.SetHexColor("quadColor", hexColor);
 
     glBindVertexArray(m_QuadVAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

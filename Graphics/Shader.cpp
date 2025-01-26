@@ -36,7 +36,26 @@ void Shader::SetTextureID(const std::string &name, const GLuint &samplerLocation
     glUniform1i(glGetUniformLocation(m_ID, name.c_str()), samplerLocation); 
 }
 
-void Shader::SetMat4(const std::string &name, const glm::mat4 &mat) {
+void Shader::SetHexColor(const std::string &name, uint32_t hexColor) const {
+    // Extract RGBA components from the hex color
+    float r = ((hexColor >> 24) & 0xFF) / 255.0f;
+    float g = ((hexColor >> 16) & 0xFF) / 255.0f;
+    float b = ((hexColor >> 8) & 0xFF) / 255.0f;
+    float a = (hexColor & 0xFF) / 255.0f;
+
+    // Create a glm::vec4 from the components
+    glm::vec4 color(r, g, b, a);
+
+    // Set the color in the shader
+    glUniform4fv(glGetUniformLocation(m_ID, name.c_str()), 1, &color[0]);
+}
+
+
+void Shader::SetVec4(const std::string &name, const glm::vec4 &value) const {
+    glUniform4fv(glGetUniformLocation(m_ID, name.c_str()), 1, &value[0]);
+}
+
+void Shader::SetMat4(const std::string &name, const glm::mat4 &mat) const {
     glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 

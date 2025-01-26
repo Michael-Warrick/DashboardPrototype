@@ -36,7 +36,7 @@ namespace Graphics {
              * @details #Draw is used to draw a single Quad, used when
              * uniqueness and flexibility are requirements.
              */
-            void Draw(glm::vec3 position, glm::vec3 scale,
+            void Draw(glm::vec3 position, glm::vec3 scale, uint32_t hexColor,
                       glm::mat4 projectionMatrix, glm::mat4 viewMatrix);
 
             /**
